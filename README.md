@@ -46,6 +46,22 @@ code  let myPizza = new Pizza();
       myPizza.calculateTotal();
 Expected Output: Pizza {size: undefined, sauce: undefined, cheese: undefined, toppings: undefined}
 
+Test: It should return totalPrice based on size property.
+code: let myPizza = new Pizza("Large");
+      myPizza.calculateTotal();
+Expected Output : 18
+
+Test: It should return totalPrice based on size and Cheese properties.
+code: let myPizza = new Pizza("Large", "House Red", "Violife");
+      myPizza.calculateTotal();
+Expected Output : 20
+Note: Charging extra for vegan cheeses.
+
+Test: It will add 2 for every element in the topping property array after the 2nd
+code: let myPizza = new Pizza("Large", "House Red", "Violife", ["Pepperoni", "Sausage", "Anchovies", "Roasted Garlic]);
+      myPizza.calculateTotal();
+Expected Output : 24
+
 ## License - [MIT](https://opensource.org/licenses/MIT)
 
 _If you run into any problems or find a bug, would like to reach me for a separate reason, feel free to send me an email @jacobleeeugenewilson@gmail.com with details of your issue._
