@@ -57,6 +57,10 @@ Order.prototype.assignId = function() {
   this.itemId += 1;
   return this.itemId;
 };
+Order.prototype.addPizzaToOrder = function(pizza){
+  pizza.id = this.assignId();
+  this.pizzas[pizza.id] = pizza;
+}
 Order.prototype.calculateTotal = function(){
   let orderTotal = 0
   for(i = 0; i < this.pizzas.length; i++){
