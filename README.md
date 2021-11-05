@@ -35,11 +35,16 @@ Leave nothing to chance!
 
 Describe: Pizza()
 
-Test "It should return a Pizza object with properties for Size, Cheese, Sauce, and Toppings"
-Code: const myPizza = new Pizza ("Large", "Mozzarella-Blend", "Vodka-Cream", ["Pepperoni", "Olive", Mushrooms"]);
+Test: "It should return a Pizza object with properties for Size, Cheese, Sauce, and Toppings"
+Code: const myPizza = new Pizza ("Large", "Mozzarella-Blend", "Vodka-Cream",      ["Pepperoni", "Olive", Mushrooms"]);
 Expected Output: Pizza {Size: "Large", Cheese: "Mozzarella-Blend", Sauce: "Vodka-Cream", Toppings: ["Pepperoni", "Olive", Mushrooms"]}
 
+Describe: Pizza.prototype.calculateTotal()
 
+Test: "It should return all key value pairs on the pizza"
+code  let myPizza = new Pizza();
+      myPizza.calculateTotal();
+Expected Output: Pizza {size: undefined, sauce: undefined, cheese: undefined, toppings: undefined}
 
 ## License - [MIT](https://opensource.org/licenses/MIT)
 
