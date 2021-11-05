@@ -9,7 +9,6 @@ function Pizza(size, sauce, cheese, toppings){
 
 Pizza.prototype.calculatePrice = function(){
   let totalPrice = 0;
-  
   // Base price determined by size
   switch (this.size){
     case ("Personal"):
@@ -27,9 +26,7 @@ Pizza.prototype.calculatePrice = function(){
     default:
     console.error("Pizza size property does not contain correct values");
   }
-
   //All sauces and no sauce will not affect the price
-
   // Charge extra for vegan cheeses
   switch (this.cheese){
     case ("Follow Your Heart"):
@@ -41,7 +38,6 @@ Pizza.prototype.calculatePrice = function(){
     default:
       // For other cheeses we don't adjust the price, no lowering, we are trying to make money after all.
     }
-
     // For every topping after the second, add 2 dollars to total
     for (i = 0; i < this.toppings.length; i ++)
     {
@@ -49,15 +45,18 @@ Pizza.prototype.calculatePrice = function(){
         totalPrice += 2;
       }
     }
-
   return totalPrice;
 };
 
 // Order business logic
 function Order(){
-  this.pizzas = [];
+  this.pizzas = {};
+  this.itemId = 0;
 }
-
+Order.prototype.assignId = function() {
+  this.itemId += 1;
+  return this.itemId;
+};
 Order.prototype.calculateTotal = function(){
   let orderTotal = 0
   for(i = 0; i < this.pizzas.length; i++){
@@ -65,12 +64,9 @@ Order.prototype.calculateTotal = function(){
   }
   return orderTotal;
 }
-
-Order.prototype.addPizzaToOrder = function(pizza){
-  this.pizzas.push(pizza);
-}
-
 // UI logic
+
+let newOrder = new Order();
 
 function attachContactListeners(){
   $("#add-pizza").click(function(){
@@ -80,7 +76,11 @@ function attachContactListeners(){
     const toppings = $("input:checkbox:checked").map(function(){
       return $(this).val();
     }).get(); // This should give us all checked checkboxes. get() lets us work with a basic array instead of a jquery object. This is great because now the toppings property will always be an array when assigned
-    const myPizza = new Pizza(size, sauce, cheese, toppings);
+    const newPizza = new Pizza(size, sauce, cheese, toppings);
+    newOrder.addPizzaToOrder(newPizza);
+  });
+  $("ol#items-ordered").on("click", "li", function(){
+
   });
 }
 
