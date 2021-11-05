@@ -70,9 +70,24 @@ Expected Output : 24
 Describe Order();
 
 Test: "It should return an object with a property of pizzas an empty array"
-Code  let myOrder = new Order;
+Code: let myOrder = new Order;
       myOrder;
 Expected Output Order {pizzas: []}
+
+Describe: Order.prototype.addPizzaToOrder(pizza)
+
+Test: "It should push the argument to the pizza's array of it's receiver.
+Code: let myOrder = new Order;
+      let myPizza = new Pizza();
+      myOrder.addPizzaToOrder(myPizza)
+Expected Result: myOrder.pizzas;
+  Order {pizzas: [myPizza{}]}
+
+Describe: Order.prototype.calculateTotal()
+
+Test: "It should return the pizza array value of it's receiver."
+Code: let myOrder = new Order;
+
 
 ## License - [MIT](https://opensource.org/licenses/MIT)
 

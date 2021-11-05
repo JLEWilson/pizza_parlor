@@ -11,86 +11,102 @@
   <div class="container">
     <h1 id="webpage-title">Pizza Parlor!</h1>
     <form id="pizza-form">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="size-radio">
-            <label> <input type="radio" name="size-radio" id="size-personal" value="Personal">  <span class="ingredient-name">Personal:</span> 10 inch</label>
+      <div class="row">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="size-radio">
+              <label> <input type="radio" name="size-radio" id="size-personal" value="Personal">  <span class="ingredient-name">Personal:</span> 10 inch</label>
+            </div>
+            <div class="radio">
+              <label> <input type="radio" name="size-radio" id="size-small" value="Small">  <span class="ingredient-name">Small:</span> 12 inch</label>
+            </div>
+            <div class="radio">
+              <label> <input type="radio" name="size-radio" id="size-medium" value="Medium">  <span class="ingredient-name">Medium:</span> 15 inch</label>
+            </div>
+            <div class="radio">
+              <label> <input type="radio" name="size-radio" id="size-large" value="Large" checked>  <span class="ingredient-name">Large:</span> 18 inch</label>
+            </div>
           </div>
-          <div class="radio">
-            <label> <input type="radio" name="size-radio" id="size-small" value="Small">  <span class="ingredient-name">Small:</span> 12 inch</label>
-          </div>
-          <div class="radio">
-            <label> <input type="radio" name="size-radio" id="size-medium" value="Medium">  <span class="ingredient-name">Medium:</span> 15 inch</label>
-          </div>
-          <div class="radio">
-            <label> <input type="radio" name="size-radio" id="size-large" value="Large" checked>  <span class="ingredient-name">Large:</span> 18 inch</label>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <h3 class="card-title">Order</h3>
+            <ol id="items-ordered">
+
+            </ol>
           </div>
         </div>
       </div>
-      <div class="col-md-12">
-        <div class="card">
-          <div class="sauce-radio">
-            <label> <input type="radio" name="sauce-radio" id="sauce-house-red" value="House Red" checked>  <span class="ingredient-name">House Red</span> Signature House Blend</label>
-          </div>
-          <div class="radio">
-            <label> <input type="radio" name="sauce-radio" id="sauce-vodka-cream" value="Vodka Cream">  <span class="ingredient-name">Vodka Cream</span> A Timeless Classic</label>
-          </div>
-          <div class="radio">
-            <label> <input type="radio" name="sauce-radio" id="sauce-basil-cashew" value="Basil Cashew">  <span class="ingredient-name">Basil Cashew:</span> Vegan</label>
-          </div>
-          <div class="radio">
-            <label> <input type="radio" name="sauce-radio" id="sauce-olive-oil" value="Olive Oil">  <span class="ingredient-name">Olive Oil</span> Vegan</label>
-          </div>
-          <div class="radio">
-            <label> <input type="radio" name="sauce-radio" id="sauce-none" value="None">  <span class="ingredient-name">None:</span> Also vegan</label>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-12">
-        <div class="card">
-          <div class="cheese-radio">
-            <label> <input type="radio" name="cheese-radio" id="cheese-signature-blend" value="Signature Blend" checked>  <span class="ingredient-name">Signature Blend:</span> Mozzarella/Cheddar</label>
-          </div>
-          <div class="radio">
-            <label> <input type="radio" name="cheese-radio" id="cheese-mozzarella" value="Mozzarella">  <span class="ingredient-name">Mozzarella:</span> You know how it goes</label>
-          </div>
-          <div class="radio">
-            <label> <input type="radio" name="cheese-radio" id="cheese-fyh" value="Follow Your Heart">  <span class="ingredient-name">Follow Your Heart:</span> Vegan</label>
-          </div>
-          <div class="radio">
-            <label> <input type="radio" name="cheese-radio" id="cheese-violife" value="Violife">  <span class="ingredient-name">Violife:</span> Vegan</label>
+      <div class="row">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="sauce-radio">
+              <label> <input type="radio" name="sauce-radio" id="sauce-house-red" value="House Red" checked>  <span class="ingredient-name">House Red</span> Signature House Blend</label>
+            </div>
+            <div class="radio">
+              <label> <input type="radio" name="sauce-radio" id="sauce-vodka-cream" value="Vodka Cream">  <span class="ingredient-name">Vodka Cream</span> A Timeless Classic</label>
+            </div>
+            <div class="radio">
+              <label> <input type="radio" name="sauce-radio" id="sauce-basil-cashew" value="Basil Cashew">  <span class="ingredient-name">Basil Cashew:</span> Vegan</label>
+            </div>
+            <div class="radio">
+              <label> <input type="radio" name="sauce-radio" id="sauce-olive-oil" value="Olive Oil">  <span class="ingredient-name">Olive Oil</span> Vegan</label>
+            </div>
+            <div class="radio">
+              <label> <input type="radio" name="sauce-radio" id="sauce-none" value="None">  <span class="ingredient-name">None:</span> Also vegan</label>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-md-12">
-        <div class="card">
-          <div class="topping-checkboxes">
-            <input type="checkbox" id="pepperoni" name="pepperoni" value="Pepperoni">
-            <label for="pepperoni"><span class="ingredient-name">Pepperoni:</span> Not Vegan</label>
-            <br>
-            <input type="checkbox" id="sausage" name="sausage" value="Sausage">
-            <label for="sausage"><span class="ingredient-name">Sausage:</span> Even we don't know what's in it</label>
-            <br>
-            <input type="checkbox" id="anchovies" name="anchovies" value="Anchovies">
-            <label for="anchovies"><span class="ingredient-name">Anchovies:</span> Not available for in house orders</label>
-            <br>
-            <input type="checkbox" id="fresh-garlic" name="fresh-garlic" value="Fresh Garlic">
-            <label for="fresh-garlic"><span class="ingredient-name">Fresh Garlic:</span> That okay stuff</label>
-            <br>
-            <input type="checkbox" id="roasted-garlic" name="roasted-garlic" value="Roasted Garlic">
-            <label for="roasted-garlic"><span class="ingredient-name">Roasted Garlic:</span> That good stuff</label>
-            <br>
-            <input type="checkbox" id="onion" name="onion" value="Onion">
-            <label for="onion"><span class="ingredient-name">Onions:</span> Onions are like ogres. They stink.</label>
-            <br>
-            <input type="checkbox" id="black-olives" name="black-olives" value="Black Olives">
-            <label for="black-olives"><span class="ingredient-name">Black Olives:</span> Not meant for fingers</label>
-            <br>
-            <input type="checkbox" id="green-peppers" name="green-peppers" value="Green Peppers">
-            <label for="green-peppers"><span class="ingredient-name">Green Peppers:</span> It's just a less ripe red pepper</label>
-            <br>
-            <input type="checkbox" id="tomatoes" name="tomatoes" value="Tomatoes">
-            <label for="tomatos"><span class="ingredient-name">Tomatoes:</span> Boil 'em, mash 'em, stick 'em on a pizza.</label>
+      <div class="row">    
+        <div class="col-md-8">
+          <div class="card">
+            <div class="cheese-radio">
+              <label> <input type="radio" name="cheese-radio" id="cheese-signature-blend" value="Signature Blend" checked>  <span class="ingredient-name">Signature Blend:</span> Mozzarella/Cheddar</label>
+            </div>
+            <div class="radio">
+              <label> <input type="radio" name="cheese-radio" id="cheese-mozzarella" value="Mozzarella">  <span class="ingredient-name">Mozzarella:</span> You know how it goes</label>
+            </div>
+            <div class="radio">
+              <label> <input type="radio" name="cheese-radio" id="cheese-fyh" value="Follow Your Heart">  <span class="ingredient-name">Follow Your Heart:</span> Vegan</label>
+            </div>
+            <div class="radio">
+              <label> <input type="radio" name="cheese-radio" id="cheese-violife" value="Violife">  <span class="ingredient-name">Violife:</span> Vegan</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="topping-checkboxes">
+              <input type="checkbox" id="pepperoni" name="pepperoni" value="Pepperoni">
+              <label for="pepperoni"><span class="ingredient-name">Pepperoni:</span> Not Vegan</label>
+              <br>
+              <input type="checkbox" id="sausage" name="sausage" value="Sausage">
+              <label for="sausage"><span class="ingredient-name">Sausage:</span> Even we don't know what's in it</label>
+              <br>
+              <input type="checkbox" id="anchovies" name="anchovies" value="Anchovies">
+              <label for="anchovies"><span class="ingredient-name">Anchovies:</span> Not available for in house orders</label>
+              <br>
+              <input type="checkbox" id="fresh-garlic" name="fresh-garlic" value="Fresh Garlic">
+              <label for="fresh-garlic"><span class="ingredient-name">Fresh Garlic:</span> That okay stuff</label>
+              <br>
+              <input type="checkbox" id="roasted-garlic" name="roasted-garlic" value="Roasted Garlic">
+              <label for="roasted-garlic"><span class="ingredient-name">Roasted Garlic:</span> That good stuff</label>
+              <br>
+              <input type="checkbox" id="onion" name="onion" value="Onion">
+              <label for="onion"><span class="ingredient-name">Onions:</span> Onions are like ogres. They stink.</label>
+              <br>
+              <input type="checkbox" id="black-olives" name="black-olives" value="Black Olives">
+              <label for="black-olives"><span class="ingredient-name">Black Olives:</span> Not meant for fingers</label>
+              <br>
+              <input type="checkbox" id="green-peppers" name="green-peppers" value="Green Peppers">
+              <label for="green-peppers"><span class="ingredient-name">Green Peppers:</span> It's just a less ripe red pepper</label>
+              <br>
+              <input type="checkbox" id="tomatoes" name="tomatoes" value="Tomatoes">
+              <label for="tomatos"><span class="ingredient-name">Tomatoes:</span> Boil 'em, mash 'em, stick 'em on a pizza.</label>
+            </div>
           </div>
         </div>
       </div>
