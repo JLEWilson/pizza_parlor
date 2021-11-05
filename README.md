@@ -39,28 +39,40 @@ Test: "It should return a Pizza object with properties for Size, Cheese, Sauce, 
 Code: const myPizza = new Pizza ("Large", "Mozzarella-Blend", "Vodka-Cream",      ["Pepperoni", "Olive", Mushrooms"]);
 Expected Output: Pizza {Size: "Large", Cheese: "Mozzarella-Blend", Sauce: "Vodka-Cream", Toppings: ["Pepperoni", "Olive", Mushrooms"]}
 
-Describe: Pizza.prototype.calculateTotal()
+Test: "It should assign price property as .calculatePrice()
+Code: let myPizza = new Pizza("Large", "House Red", "Violife", ["Pepperoni", "Sausage", "Anchovies", "Roasted Garlic]);
+      myPizza.price
+Expected Output: 24;
+
+Describe: Pizza.prototype.calculatePrice()
 
 Test: "It should return all key value pairs on the pizza"
-code  let myPizza = new Pizza();
-      myPizza.calculateTotal();
+Code  let myPizza = new Pizza();
+      myPizza.calculatePrice();
 Expected Output: Pizza {size: undefined, sauce: undefined, cheese: undefined, toppings: undefined}
 
-Test: It should return totalPrice based on size property.
-code: let myPizza = new Pizza("Large");
-      myPizza.calculateTotal();
+Test: "It should return totalPrice based on size property."
+Code: let myPizza = new Pizza("Large");
+      myPizza.calculatePrice();
 Expected Output : 18
 
-Test: It should return totalPrice based on size and Cheese properties.
-code: let myPizza = new Pizza("Large", "House Red", "Violife");
-      myPizza.calculateTotal();
+Test: "It should return totalPrice based on size and Cheese properties."
+Code: let myPizza = new Pizza("Large", "House Red", "Violife");
+      myPizza.calculatePrice();
 Expected Output : 20
 Note: Charging extra for vegan cheeses.
 
-Test: It will add 2 for every element in the topping property array after the 2nd
-code: let myPizza = new Pizza("Large", "House Red", "Violife", ["Pepperoni", "Sausage", "Anchovies", "Roasted Garlic]);
-      myPizza.calculateTotal();
+Test: "It will add 2 for every element in the topping property array after the 2nd"
+Code: let myPizza = new Pizza("Large", "House Red", "Violife", ["Pepperoni", "Sausage", "Anchovies", "Roasted Garlic]);
+      myPizza.calculatePrice();
 Expected Output : 24
+
+Describe Order();
+
+Test: "It should return an object with a property of pizzas an empty array"
+Code  let myOrder = new Order;
+      myOrder;
+Expected Output Order {pizzas: []}
 
 ## License - [MIT](https://opensource.org/licenses/MIT)
 

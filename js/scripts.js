@@ -7,8 +7,8 @@ function Pizza(size, sauce, cheese, toppings){
   this.price = this.calculateTotal();
 }
 
-Pizza.prototype.calculateTotal = function(){
-  let totalPrice = 0;
+Pizza.prototype.calculatePrice = function(){
+  let price = 0;
   
   // Base price determined by size
   switch (this.size){
@@ -56,6 +56,10 @@ Pizza.prototype.calculateTotal = function(){
 // Order business logic
 function Order(){
   this.pizzas = [];
+}
+
+Order.prototype.calculateTotal(){
+
 }
 
 // UI logic
