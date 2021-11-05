@@ -72,17 +72,10 @@ Order.prototype.addPizzaToOrder = function(pizza){
 
 // UI logic
 
+
+
 $(document).ready(function(){
   $("#pizza-form").submit(function(event){
     event.preventDefault();
-    //Gather user selections
-    const size = $("input:radio[name=size-radio]:checked").val();
-    const sauce = $("input:radio[name=sauce-radio]:checked").val()
-    const cheese = $("input:radio[name=cheese-radio]:checked").val()
-    const toppings = $("input:checkbox:checked").map(function(){
-      return $(this).val();
-    }).get(); // This should give us all checked checkboxes. get() lets us work with a basic array instead of a jquery object. This is great because now the toppings property will always be an array when assigned
-    const myPizza = new Pizza(size, sauce, cheese, toppings);
-    console.log(myPizza);
   });
 });
