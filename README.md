@@ -67,26 +67,61 @@ Code: let myPizza = new Pizza("Large", "House Red", "Violife", ["Pepperoni", "Sa
       myPizza.calculatePrice();
 Expected Output : 24
 
-Describe Order();
+Describe: Order();
 
 Test: "It should return an object with a property of pizzas an empty array"
 Code: let myOrder = new Order;
       myOrder;
 Expected Output Order {pizzas: []}
 
-Describe: Order.prototype.addPizzaToOrder(pizza)
+Describe: Order.prototype.assignId()
 
-Test: "It should push the argument to the pizza's array of it's receiver.
+Test: "Will assign a unique Id for each pizza added to the order."
 Code: let myOrder = new Order;
       let myPizza = new Pizza();
-      myOrder.addPizzaToOrder(myPizza)
-Expected Result: myOrder.pizzas;
-  Order {pizzas: [myPizza{}]}
+      myOrder.addPizzaToOrder(myPizza);
+      myOrder.pizzas{}
+Expected Output: pizzas: Pizza {myPizza{}}
+Note: Created addPizzaToOrder here, functions work in tandem.
+
+Describe: Order.prototype.addPizzaToOrder(pizza)
+
+Test: "It should add a pizza object to order.pizzas."
+Code: let myOrder = new Order;
+      let myPizza = new Pizza();
+      myOrder.addPizzaToOrder(myPizza);
+      myOrder.Pizzas
+Expected Result: pizzas {Pizza myPizza{...}}
+
+Describe: Order.prototype.findItem
+
+Test: "It should return false if the item id is undefined.
+Code: myOrder.findItem(1);
+Expected Output: false;
+
+Test: "It should return the item in this.Pizzas if it is defined."
+Code: myOrder.findItem(1);
+Expected Output:
+
+Describe: Order.prototype.deleteItem(id)
+
+Test: "It should return false if the item id is undefined.
+Code: myOrder.deleteItem(1);
+Expected Output: false;
+
+Test: "It should remove the item by id from this.pizzas and return true if it exists"
+Code: myOrder.deleteItem(1);
+Expected Output: true
 
 Describe: Order.prototype.calculateTotal()
 
-Test: "It should return the pizza array value of it's receiver."
+Test: "It should return Order.pizzas."
 Code: let myOrder = new Order;
+      myOrder.addPizzaToOrder(myPizza);
+      myOrder.calculateTotal();
+Expected Output: Order{myPizza...}
+
+Test
 
 
 ## License - [MIT](https://opensource.org/licenses/MIT)

@@ -61,8 +61,21 @@ Order.prototype.addPizzaToOrder = function(pizza){
   pizza.id = this.assignId();
   this.pizzas[pizza.id] = pizza;
 }
+Order.prototype.findItem = function(id){
+  if(this.pizzas[id] != undefined){
+    return this.pizzas[id];
+  }
+  return false;
+};
+Order.prototype.deleteItem = function(id) {
+  if (this.contacts[id] === undefined) {
+    return false;
+  }
+  delete this.contacts[id];
+  return true;
+};
 Order.prototype.calculateTotal = function(){
-  let orderTotal = 0
+  let orderTotal = 0;
   for(i = 0; i < this.pizzas.length; i++){
     orderTotal += this.pizzas[i].price;
   }
