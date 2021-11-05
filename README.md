@@ -35,9 +35,9 @@ Leave nothing to chance!
 
 Describe: Pizza()
 
-Test "It should return a Pizza object with properties for size, cheese, sauce, and additional toppings"
+Test "It should return a Pizza object with properties for Size, Cheese, Sauce, and Toppings"
 Code: const myPizza = new Pizza ("Large", "Mozzarella-Blend", "Vodka-Cream", ["Pepperoni", "Olive", Mushrooms"]);
-Expected Output: Pizza {Size: "Large", Cheese: "Mozzarella-Blend", Sauce: "Vodka-Cream", }
+Expected Output: Pizza {Size: "Large", Cheese: "Mozzarella-Blend", Sauce: "Vodka-Cream", Toppings: ["Pepperoni", "Olive", Mushrooms"]}
 
 ## License - [MIT](https://opensource.org/licenses/MIT)
 
