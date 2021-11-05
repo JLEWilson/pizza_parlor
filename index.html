@@ -11,7 +11,16 @@
   <div class="container">
     <h1 id="webpage-title">Pizza Parlor!</h1>
     <form id="pizza-form">
-      <div class="row">
+      <div class="col-md-4 side-bar">
+        <div class="card">
+          <h2 class="card-title">Order</h2>
+          <ol id="items-ordered">
+
+          </ol>
+        </div>
+        <button type="submit" class="btn btn-dark" id="place-order">Place Order</button>
+      </div>
+      <div class="row row1">
         <div class="col-md-8">
           <div class="card">
             <div class="size-radio">
@@ -27,15 +36,6 @@
               <label> <input type="radio" name="size-radio" id="size-large" value="Large" checked>  <span class="ingredient-name">Large:</span> 18 inch</label>
             </div>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card">
-            <h3 class="card-title">Order</h3>
-            <ol id="items-ordered">
-
-            </ol>
-          </div>
-          <button type="submit" class="btn btn-dark" id="place-order">Place Order</button>
         </div>
       </div>
       <div class="row">
@@ -111,7 +111,7 @@
           </div>
         </div>
       </div>
-      <button type="submit" class="btn btn-dark" id="add-pizza">Add Pizza to Order</button>
+      <button type="button" class="btn btn-dark" id="add-pizza">Add Pizza to Order</button>
     </form>
   </div>
 </body>

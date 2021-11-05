@@ -4,7 +4,7 @@ function Pizza(size, sauce, cheese, toppings){
   this.sauce = sauce;
   this.cheese = cheese;
   this.toppings = toppings;
-  this.price = this.calculateTotal();
+  this.price = this.calculatePrice();
 }
 
 Pizza.prototype.calculatePrice = function(){
@@ -68,10 +68,11 @@ Order.prototype.findItem = function(id){
   return false;
 };
 Order.prototype.deleteItem = function(id) {
-  if (this.contacts[id] === undefined) {
+  if (this.pizzas[id] === undefined) {
     return false;
   }
-  delete this.contacts[id];
+  console.log("item to be deleted: " +this.pizzas[id]);
+  delete this.pizzas[id];
   return true;
 };
 Order.prototype.calculateTotal = function(){
@@ -81,6 +82,7 @@ Order.prototype.calculateTotal = function(){
   }
   return orderTotal;
 }
+
 // UI logic
 
 let newOrder = new Order();
@@ -95,13 +97,27 @@ function attachContactListeners(){
     }).get(); // This should give us all checked checkboxes. get() lets us work with a basic array instead of a jquery object. This is great because now the toppings property will always be an array when assigned
     const newPizza = new Pizza(size, sauce, cheese, toppings);
     newOrder.addPizzaToOrder(newPizza);
+    displayOrderItems(newOrder);
   });
-  $("ol#items-ordered").on("click", "li", function(){
-
+  $("ol#items-ordered").on("click", "h3", function(){
+    //To show the itemDetails
   });
 }
 
+function displayOrderItems(orderToDisplay){
+  let itemList = $("ol#items-ordered");
+  let htmlForItem = "";
+  Object.keys(orderToDisplay.pizzas).forEach(function(key){
+    const item = orderToDisplay.findItem(key);
+    //Will have to add delete button functionality with onclick attribute to delete dynamically
+    const htmlForButton = "<button class='btn btn-dark item-ordered' onclick='newOrder.deleteItem(" + item.id + ")' type='button'>" + "X" +"</button>";
+    htmlForItem += "<h3 id=" + item.id + ">" + "Custom Pizza " + item.id + htmlForButton + "</h3>";
+  });
+  itemList.html(htmlForItem);
+}
+
 $(document).ready(function(){
+  attachContactListeners();
   $("#pizza-form").submit(function(event){
     event.preventDefault();
   });

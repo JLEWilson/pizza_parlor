@@ -1,3 +1,16 @@
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+height: 100%;
+}
+.side-bar {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+}
 .ingredient-name{
   font-style: italic;
   font-weight: 700;
