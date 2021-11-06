@@ -1,18 +1,27 @@
+.container{
+  min-width: 45em;
+}
 .flex-container{
   display: flex;
 }
 .left-box{
  flex:3;
  order: 1;
+ min-width: 10em;
 }
 .right-box{
-  flex: 2;
+  flex: 1 0 auto;
   order: 2;
-}
-.side-bar{
-  width: 100%;
+  min-width: 5em;
 }
 .ingredient-name{
   font-style: italic;
   font-weight: 700;
+}
+.side-bar{
+  min-width: 5em;
+}
+.selection-card{
+  width:90%;
+  min-width: 10em;
 }

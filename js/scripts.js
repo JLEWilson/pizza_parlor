@@ -82,8 +82,38 @@ Order.prototype.calculateTotal = function(){
 // UI logic
 let newOrder = new Order();
 
+
+function showItemDetails(itemId){
+  const item = newOrder.findItem(itemId);
+  $("#size" + itemId).html("Size: " + item.size);
+  $("#sauce" + itemId).html("Sauce: " + item.sauce);
+  $("#cheese" + itemId).html("Cheese: " + item.cheese);
+}
 function attachContactListeners(){
-  $("#add-pizza").click(function(){
+  $("#items-ordered").on("click", "button", function() {
+    let itemId = this.id.replace(/button/, ""); //Added button to buttonId to prevent id duplicates, this button from the id so we can use it in deleteItem()
+    newOrder.deleteItem(itemId);
+    $(this).closest("h3").remove();
+  });
+  $("#items-ordered").on("click", "h3", function() {
+    showItemDetails(this.id);
+  });
+}
+function displayOrderItems(orderToDisplay){
+  let itemList = $("ol#items-ordered");
+  let htmlForItem = "";
+  Object.keys(orderToDisplay.pizzas).forEach(function(key){
+  const item = orderToDisplay.findItem(key);
+  const htmlForButton = "<button class='btn btn-dark item-ordered' id='button" + item.id + "' type='button'>" + "X" +"</button>";
+  const htmlForIngredients = "<p id='size" + item.id +"'></p><p id='sauce" + item.id +"'></p><p id='cheese" + item.id +"'></p><p id='ingredients" + item.id +"'></p>"
+  htmlForItem += "<h3 id=" + item.id + ">" + "Custom Pizza " + item.id + htmlForButton + "</h3>" + htmlForIngredients;
+ });
+  itemList.html(htmlForItem);
+}
+$(document).ready(function(){
+  attachContactListeners();
+  $("#pizza-form").submit(function(event){
+    event.preventDefault();
     const size = $("input:radio[name=size-radio]:checked").val();
     const sauce = $("input:radio[name=sauce-radio]:checked").val()
     const cheese = $("input:radio[name=cheese-radio]:checked").val()
@@ -94,29 +124,8 @@ function attachContactListeners(){
     newOrder.addPizzaToOrder(newPizza);
     displayOrderItems(newOrder);
   });
-  
-}
-function displayOrderItems(orderToDisplay){
-  let itemList = $("ol#items-ordered");
-  let htmlForItem = "";
-  Object.keys(orderToDisplay.pizzas).forEach(function(key){
-  const item = orderToDisplay.findItem(key);
-  //Will have to add delete button functionality with onclick attribute to delete dynamically
-  const htmlForButton = "<button class='btn btn-dark item-ordered' onclick='newOrder.deleteItem(" + item.id + ");' type='button'>" + "X" +"</button>";
-  htmlForItem += "<h3 id=" + item.id + ">" + "Custom Pizza " + item.id + htmlForButton + "</h3>";
- });
-  itemList.html(htmlForItem);
-  attachDeleteButtonListeners();
-}
-function attachDeleteButtonListeners(){
-  $(".item-ordered").on("click", function(){
-    $(this).closest("h3").remove();
-  });
-}
-$(document).ready(function(){
-  attachContactListeners();
-  $("#pizza-form").submit(function(event){
-    event.preventDefault();
+  $('#order-form').submit(function(event){
+
   });
 });
 
