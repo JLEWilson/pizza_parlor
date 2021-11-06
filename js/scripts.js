@@ -88,6 +88,17 @@ function showItemDetails(itemId){
   $("#size" + itemId).html("Size: " + item.size);
   $("#sauce" + itemId).html("Sauce: " + item.sauce);
   $("#cheese" + itemId).html("Cheese: " + item.cheese);
+  if(item.toppings.length === 0){
+    // We don't want to do anything here
+  } else{
+    $("#ingredients" + itemId).html("Toppings: ");
+    let htmlForToppings = "";
+    item.toppings.forEach(function(topping){
+      htmlForToppings += "<li>" + topping + "</li>"
+    });
+    $("#ingredientsList" + itemId).html(htmlForToppings);
+  }
+  
 }
 function attachContactListeners(){
   $("#items-ordered").on("click", "button", function() {
@@ -105,7 +116,7 @@ function displayOrderItems(orderToDisplay){
   Object.keys(orderToDisplay.pizzas).forEach(function(key){
   const item = orderToDisplay.findItem(key);
   const htmlForButton = "<button class='btn btn-dark item-ordered' id='button" + item.id + "' type='button'>" + "X" +"</button>";
-  const htmlForIngredients = "<p id='size" + item.id +"'></p><p id='sauce" + item.id +"'></p><p id='cheese" + item.id +"'></p><p id='ingredients" + item.id +"'></p>"
+  const htmlForIngredients = "<p class='ingredientsP' id='size" + item.id +"'></p><p class='ingredientsP' id='sauce" + item.id +"'></p><p class='ingredientsP' id='cheese" + item.id +"'></p><p id='ingredients" + item.id +"'></p><ol id=ingredientsList" + item.id + ">"
   htmlForItem += "<h3 id=" + item.id + ">" + "Custom Pizza " + item.id + htmlForButton + "</h3>" + htmlForIngredients;
  });
   itemList.html(htmlForItem);
