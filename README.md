@@ -2,7 +2,7 @@
 
 #### By _**Jacob Wilson**_
 
-#### _A brief description of the project._
+#### _A webpage for creating your own pizza_
 
 ## Technologies Used
 
@@ -15,17 +15,19 @@
 
 ## Description
 
-_A detailed description of the project._
+_A webpage that takes user input through different kinds of forms. That input is then used to calculate the total price of the pizza given the toppings selected, this information is used to display details of the order to the user in the Order area. _
 
 ## Setup/Installation Requirements
 
 Leave nothing to chance!
 
-* _You can find the github repository [here]()_
-* _Clone the repository to your computer_
-* _Open the index.html file in a browser_
+* _You can find the github repository [here](https://github.com/JLEWilson/pizza_parlor)_
+* _Click the code button, and copy the https link_
+* _In your in git bash or your preferred git terminal navigate to the directory you would like to store the project_
+* _Enter: "git clone" followed by the https link_
+* _Now that the repository is cloned to your computer, navigate to it's location and click the index.html file to view_
 * _OR_
-* _You can find the project on github pages[here]()_
+* _You can find the project on github pages[here](https://jlewilson.github.io/pizza_parlor/)_
 
 ## Known Bugs
 
