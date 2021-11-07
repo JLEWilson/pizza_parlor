@@ -1,9 +1,10 @@
 // Pizza business logic
-function Pizza(size, sauce, cheese, toppings){
+function Pizza(size, sauce, cheese, toppings, name){
   this.size = size;
   this.sauce = sauce;
   this.cheese = cheese;
   this.toppings = toppings;
+  this.name = name;
   this.price = this.calculatePrice();
 }
 Pizza.prototype.calculatePrice = function(){
@@ -74,16 +75,18 @@ Order.prototype.deleteItem = function(id) {
 };
 Order.prototype.calculateTotal = function(){
   let orderTotal = 0;
-  for(i = 0; i < this.pizzas.length; i++){
-    orderTotal += this.pizzas[i].price;
-  }
+  let order = this;
+  Object.keys(this.pizzas).forEach(function(key){
+    const pizza = order.findItem(key);
+    orderTotal += pizza.price;
+  });
   return orderTotal;
 }
 // UI logic
 let newOrder = new Order();
 
 
-function showItemDetails(itemId){
+function setItemDetails(itemId){
   const item = newOrder.findItem(itemId);
   $("#size" + itemId).html("Size: " + item.size);
   $("#sauce" + itemId).html("Sauce: " + item.sauce);
@@ -98,29 +101,46 @@ function showItemDetails(itemId){
     });
     $("#ingredientsList" + itemId).html(htmlForToppings);
   }
-  
 }
-function attachContactListeners(){
-  $("#items-ordered").on("click", "button", function() {
-    let itemId = this.id.replace(/button/, ""); //Added button to buttonId to prevent id duplicates, this button from the id so we can use it in deleteItem()
-    newOrder.deleteItem(itemId);
-    $(this).closest("h3").remove();
-  });
-  $("#items-ordered").on("click", "h3", function() {
-    showItemDetails(this.id);
-  });
+function deleteItemDetails(itemId){
+  $("#size" + itemId).remove();
+  $("#sauce" + itemId).remove();
+  $("#cheese" + itemId).remove();
+  $("#ingredients" + itemId).remove();
+}
+function toggleItemDetails(itemId){
+  $("#size" + itemId).toggle();
+  $("#sauce" + itemId).toggle();
+  $("#cheese" + itemId).toggle();
+  $("#ingredients" + itemId).toggle();
 }
 function displayOrderItems(orderToDisplay){
-  let itemList = $("ol#items-ordered");
+  let itemList = $("div#items-ordered");
   let htmlForItem = "";
   Object.keys(orderToDisplay.pizzas).forEach(function(key){
   const item = orderToDisplay.findItem(key);
   const htmlForButton = "<button class='btn btn-dark item-ordered' id='button" + item.id + "' type='button'>" + "X" +"</button>";
-  const htmlForIngredients = "<p class='ingredientsP' id='size" + item.id +"'></p><p class='ingredientsP' id='sauce" + item.id +"'></p><p class='ingredientsP' id='cheese" + item.id +"'></p><p id='ingredients" + item.id +"'></p><ol id=ingredientsList" + item.id + ">"
-  htmlForItem += "<h3 id=" + item.id + ">" + "Custom Pizza " + item.id + htmlForButton + "</h3>" + htmlForIngredients;
+  const htmlForIngredients = "<p class='ingredientsP' id='size" + item.id +"'></p><p class='ingredientsP' id='sauce" + item.id +"'></p><p class='ingredientsP' id='cheese" + item.id +"'></p><p id='ingredients" + item.id +"'></p><ol id=ingredientsList" + item.id + "></ol>"
+  htmlForItem += "<h3 id=" + item.id + ">" + "(" + item.id + ")" + item.name + ":  $" + item.price + "      " + htmlForButton + "</h3>" + htmlForIngredients;
  });
   itemList.html(htmlForItem);
 }
+function displayOrderTotal(){
+  $("#total-price").html(newOrder.calculateTotal());
+  $("#display-total").show();
+}
+function attachContactListeners(){
+  $("#items-ordered").on("click", "button", function() {
+    let itemId = this.id.replace(/button/, ""); //Added button to buttonId to prevent id duplicates, this button from the id so we can use it in deleteItem()
+    deleteItemDetails(itemId);
+    newOrder.deleteItem(itemId);
+    $(this).closest("h3").remove();
+  });
+  $("#items-ordered").on("click", "h3", function() {
+    toggleItemDetails(this.id);
+  });
+}
+
 $(document).ready(function(){
   attachContactListeners();
   $("#pizza-form").submit(function(event){
@@ -131,12 +151,20 @@ $(document).ready(function(){
     const toppings = $("input:checkbox:checked").map(function(){
       return $(this).val();
     }).get(); // This should give us all checked checkboxes. get() lets us work with a basic array instead of a jquery object. This is great because now the toppings property will always be an array when assigned
-    const newPizza = new Pizza(size, sauce, cheese, toppings);
+    let name = $("#pizza-name").val();
+    if(name === undefined){
+      name = "Custom Pizza";
+    }
+    const newPizza = new Pizza(size, sauce, cheese, toppings, name);
     newOrder.addPizzaToOrder(newPizza);
+    displayOrderTotal();
     displayOrderItems(newOrder);
+    setItemDetails(newPizza.id);
   });
   $('#order-form').submit(function(event){
-
+    event.preventDefault();
+    $(".flex-container").hide();
+    $("#order-submitted").show();
   });
 });
 
@@ -144,4 +172,5 @@ $(document).ready(function(){
   css styling, color images etc
   complete readme
   allow click on order item to display ingredients
+  Show total, Add submit order button fucntions
 */

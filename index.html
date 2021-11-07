@@ -9,14 +9,16 @@
 </head>
 <body>
   <div class="container">
-    <h1 id="webpage-title">Pizza Parlor!</h1>
+    <h1 id="webpage-title">Welcome to Los Pizzas Hermanos!</h1>
     <div class="flex-container">
       <div class="right-box">
         <form id="order-form">
           <div class="card side-bar">
             <h2 class="card-title">Order</h2>
-            <ol id="items-ordered">
-            </ol>
+            <div id="items-ordered">
+            </div>
+            <br>
+            <h4 id="display-total">Total: <span id="total-price"></span></h4>
           </div>
           <button type="submit" class="btn btn-dark" id="place-order">Place Order</button>
         </form>
@@ -25,6 +27,8 @@
         <form id="pizza-form">  
           <div class="row">
             <div class="card selection-card">
+              <h2>Pick Your Size!</h2>
+              <hr>
               <div class="size-radio">
                 <label> <input type="radio" name="size-radio" id="size-personal" value="Personal">  <span class="ingredient-name">Personal:</span> 10 inch</label>
               </div>
@@ -41,6 +45,8 @@
           </div>
           <div class="row">
             <div class="card selection-card">
+              <h2>Pick Your Sauce!</h2>
+              <hr>
               <div class="sauce-radio">
                 <label> <input type="radio" name="sauce-radio" id="sauce-house-red" value="House Red" checked>  <span class="ingredient-name">House Red</span> Signature House Blend</label>
               </div>
@@ -60,6 +66,8 @@
           </div>
           <div class="row">    
             <div class="card selection-card">
+              <h2>Pick Your Cheese!</h2>
+              <hr>
               <div class="cheese-radio">
                 <label> <input type="radio" name="cheese-radio" id="cheese-signature-blend" value="Signature Blend" checked>  <span class="ingredient-name">Signature Blend:</span> Mozzarella/Cheddar</label>
               </div>
@@ -72,10 +80,15 @@
               <div class="radio">
                 <label> <input type="radio" name="cheese-radio" id="cheese-violife" value="Violife">  <span class="ingredient-name">Violife:</span> Vegan</label>
               </div>
+              <div class="radio">
+                <label> <input type="radio" name="cheese-radio" id="cheese-none" value="none">  <span class="ingredient-name">None:</span> Yet again vegan</label>
+              </div>
             </div>
           </div>
           <div class="row">
             <div class="card selection-card">
+              <h2>Choose your weapons! I mean... Toppings!</h2>
+              <hr>
               <div class="topping-checkboxes">
                 <input type="checkbox" id="pepperoni" name="pepperoni" value="Pepperoni">
                 <label for="pepperoni"><span class="ingredient-name">Pepperoni:</span> Not Vegan</label>
@@ -106,10 +119,16 @@
               </div>
             </div>
           </div>
+          <label for="pizza-name">Name your pizza?</label>
+          <input type="text" maxlength="16" id="pizza-name" placeholder="Optional" name="pizza-name">
+          <br>
           <button type="submit" class="btn btn-dark" id="add-pizza">Add Pizza to Order</button>
         </form>
       </div>
     </div>
+  </div>
+  <div id="order-submitted">
+    <iframe src="https://giphy.com/embed/ffXJWN9NRGg0w" width="480" height="421" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/pizza-breaking-bad-walter-white-ffXJWN9NRGg0w"></a></p>
   </div>
 </body>
 </html>
