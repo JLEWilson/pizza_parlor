@@ -167,10 +167,3 @@ $(document).ready(function(){
     $("#order-submitted").show();
   });
 });
-
-/* Things to add
-  css styling, color images etc
-  complete readme
-  allow click on order item to display ingredients
-  Show total, Add submit order button fucntions
-*/
