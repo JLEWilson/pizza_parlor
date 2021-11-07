@@ -152,7 +152,7 @@ $(document).ready(function(){
       return $(this).val();
     }).get(); // This should give us all checked checkboxes. get() lets us work with a basic array instead of a jquery object. This is great because now the toppings property will always be an array when assigned
     let name = $("#pizza-name").val();
-    if(name === undefined){
+    if(name === ""){
       name = "Custom Pizza";
     }
     const newPizza = new Pizza(size, sauce, cheese, toppings, name);
