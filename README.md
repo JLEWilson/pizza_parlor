@@ -37,9 +37,9 @@ Leave nothing to chance!
 
 Describe: Pizza()
 
-Test: "It should return a Pizza object with properties for Size, Cheese, Sauce, and Toppings"
-Code: const myPizza = new Pizza ("Large", "Mozzarella-Blend", "Vodka-Cream",      ["Pepperoni", "Olive", Mushrooms"]);
-Expected Output: Pizza {Size: "Large", Cheese: "Mozzarella-Blend", Sauce: "Vodka-Cream", Toppings: ["Pepperoni", "Olive", Mushrooms"]}
+Test: "It should return a Pizza object with properties for Size, Cheese, Sauce, Toppings, and Name"
+Code: const myPizza = new Pizza ("Large", "Mozzarella-Blend", "Vodka-Cream", ["Pepperoni", "Olive", Mushrooms"], "Pizza1);
+Expected Output: Pizza {Size: "Large", Cheese: "Mozzarella-Blend", Sauce: "Vodka-Cream", Toppings: ["Pepperoni", "Olive", Mushrooms"], Name : "Pizza1"}
 
 Test: "It should assign price property as .calculatePrice()
 Code: let myPizza = new Pizza("Large", "House Red", "Violife", ["Pepperoni", "Sausage", "Anchovies", "Roasted Garlic]);
@@ -71,10 +71,12 @@ Expected Output : 24
 
 Describe: Order();
 
-Test: "It should return an object with a property of pizzas an empty array"
+Test: "It should return an object with properties of pizzas as an empty object, and itemId at 0"
 Code: let myOrder = new Order;
       myOrder;
-Expected Output Order {pizzas: []}
+Expected Output Order {pizzas: {}, itemId: 0}
+
+
 
 Describe: Order.prototype.assignId()
 
@@ -123,8 +125,11 @@ Code: let myOrder = new Order;
       myOrder.calculateTotal();
 Expected Output: Order{myPizza...}
 
-Test
-
+Test: "It should loop through pizzas and return the total of all prices together"
+Code: let myOrder = new Order;
+      myOrder.addPizzaToOrder(myPizza);
+      myOrder.calculateTotal();
+Expected Output: 18
 
 ## License - [MIT](https://opensource.org/licenses/MIT)
 
